@@ -15,7 +15,7 @@ class State {
         this.aspect = this.width / this.height;
         this.fov = 90;
         this.near = 1;
-        this.far = 35000;
+        this.far = 70000;
         this.canvas = document.getElementById("canvas");
         this.clock = new THREE.Clock();
 

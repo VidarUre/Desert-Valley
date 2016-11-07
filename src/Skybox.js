@@ -6,7 +6,7 @@ class Skybox {
 
     }
 
-    getSkybox() {
+    generateSkyboxMaterials() {
         this.textureURLs = [
             "../Oblig4/textures/skybox/DarkStormyLeft2048.png",
             "../Oblig4/textures/skybox/DarkStormyRight2048.png",
@@ -28,7 +28,6 @@ class Skybox {
 
         }
 
-        this.cube = new THREE.Mesh(new THREE.CubeGeometry(20000,20000,20000), new THREE.MeshFaceMaterial(this.materials));
-        return this.cube;
+        return this.materials;
     }
 }
