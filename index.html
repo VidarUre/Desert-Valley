@@ -84,12 +84,12 @@
 
         uniform sampler2D heightMap;
 
-        uniform sampler2D grass;
+        uniform sampler2D sand;
         uniform sampler2D rock;
 
         uniform vec2 terrainTextureScale;
 
-        uniform float grassLevel;
+        uniform float sandLevel;
         uniform float rockLevel;
 
 		void main() {
@@ -102,7 +102,7 @@
             vec3 finalColor = vec3(0.0, 0.0, 0.0);
 
             if(height < rockLevel) {
-                finalColor = texture2D(grass, scaledUv).rgb;
+                finalColor = texture2D(sand, scaledUv).rgb;
             } else {
                 finalColor = texture2D(rock, scaledUv).rgb;
             }

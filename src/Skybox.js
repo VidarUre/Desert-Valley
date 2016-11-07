@@ -8,12 +8,12 @@ class Skybox {
 
     generateSkyboxMaterials() {
         this.textureURLs = [
-            "../Oblig4/textures/skybox/DarkStormyLeft2048.png",
-            "../Oblig4/textures/skybox/DarkStormyRight2048.png",
-            "../Oblig4/textures/skybox/DarkStormyUp2048.png",
-            "../Oblig4/textures/skybox/DarkStormyDown2048.png",
-            "../Oblig4/textures/skybox/DarkStormyFront2048.png",
-            "../Oblig4/textures/skybox/DarkStormyBack2048.png"
+            "../Oblig4/textures/skybox/TropicalSunnyDayLeft2048.png",
+            "../Oblig4/textures/skybox/TropicalSunnyDayRight2048.png",
+            "../Oblig4/textures/skybox/TropicalSunnyDayUp2048.png",
+            "../Oblig4/textures/skybox/TropicalSunnyDayDown2048.png",
+            "../Oblig4/textures/skybox/TropicalSunnyDayFront2048.png",
+            "../Oblig4/textures/skybox/TropicalSunnyDayBack2048.png"
         ];
 
         this.materials = [];

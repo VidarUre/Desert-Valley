@@ -22,14 +22,14 @@ class World {
         this.cube = new THREE.Mesh(new THREE.CubeGeometry(skyboxWidth, skyboxHeight, skyboxDepth), new THREE.MeshFaceMaterial(skyboxMaterials));
         this.state.scene.add(this.cube);
 
-        // Rocks
+        // Palace?
 
-        // Trees?
+        // Palm trees?
 
-        // Flames
+        // Water
 
-        // Water/Lava
+        // Camels
 
-        // Fog?
+        // Fog
     }
 }

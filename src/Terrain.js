@@ -16,9 +16,9 @@ class Terrain {
         // We scale the geometry to avoid scaling the node, since scales propagate.
         heightMapGeometry.scale(worldMapWidth, worldMapMaxHeight, worldMapDepth);
 
-        var grassTexture = this.wrapTexture('textures/Gras_01.png');
+        var sandTexture = this.wrapTexture('textures/sand.jpg');
         var rockTexture = this.wrapTexture('textures/rock.jpg');
-        var terrainMaterialImp = this.terrainMaterial(grassTexture, rockTexture);
+        var terrainMaterialImp = this.terrainMaterial(sandTexture, rockTexture);
 
         var terrainMesh = new HeightMapMesh(heightMapGeometry, terrainMaterialImp);
 
@@ -32,7 +32,7 @@ class Terrain {
         return objectTexture;
     }
 
-    terrainMaterial(grassTexture, rockTexture) {
+    terrainMaterial(sandTexture, rockTexture) {
         var tmi = new THREE.ShaderMaterial({
             // We are reusing vertex shader from MeshBasicMaterial
 
@@ -43,11 +43,11 @@ class Terrain {
             uniforms: {
                 'heightMap': {type: 't', value: this.heightMapTexture},
 
-                'grass': {type: 't', value: grassTexture},
+                'sand': {type: 't', value: sandTexture},
 
                 'rock': {type: 't', value: rockTexture},
 
-                'grassLevel': {type: 'f', value: 0.1},
+                'sandLevel': {type: 'f', value: 0.1},
 
                 'rockLevel': {type: 'f', value: 0.6},
 
