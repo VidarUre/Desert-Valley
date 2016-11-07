@@ -47,9 +47,9 @@ class Terrain {
 
                 'rock': {type: 't', value: rockTexture},
 
-                'sandLevel': {type: 'f', value: 0.1},
+                'sandLevel': {type: 'f', value: 0.2},
 
-                'rockLevel': {type: 'f', value: 0.6},
+                'rockLevel': {type: 'f', value: 0.1},
 
                 // Scale the texture coordinates when coloring the terrain
                 'terrainTextureScale': {type: 'v2', value: new THREE.Vector2(200, 200)},

@@ -101,10 +101,10 @@
 
             vec3 finalColor = vec3(0.0, 0.0, 0.0);
 
-            if(height < rockLevel) {
-                finalColor = texture2D(sand, scaledUv).rgb;
-            } else {
+            if(height < sandLevel) {
                 finalColor = texture2D(rock, scaledUv).rgb;
+            } else {
+                finalColor = texture2D(sand, scaledUv).rgb;
             }
 
 			gl_FragColor = vec4(finalColor, 1.0);
@@ -120,7 +120,7 @@
     }
 </script>
 
-<img src="textures/heightmap.jpeg" id="heightmap" hidden/>
+<img src="textures/desertheightmap.png" id="heightmap" hidden/>
 
 </body>
 </html>
