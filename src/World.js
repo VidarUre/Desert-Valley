@@ -30,6 +30,10 @@ class World {
 
         // Camels
 
+        // Light
+        let amb = new THREE.AmbientLight(0xFFFFFF);
+        this.state.scene.add(amb)
+
         // Fog
     }
 }

@@ -25,11 +25,7 @@ class State {
         // Camera
         this.camera = new THREE.PerspectiveCamera(this.fov, this.aspect, this.near, this.far);
         this.camera.position.z = 50;  // move a little
-        this.scene.add(this.camera);
-
-        // Light
-        let amb = new THREE.AmbientLight(0xFFFFFF);
-        this.scene.add(amb);
+        this.scene.add(this.camera);;
 
         // Renderer
         this.renderer = new THREE.WebGLRenderer({
