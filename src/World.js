@@ -3,6 +3,9 @@ class World {
     constructor(state) {
         this.state = state; // Store the injected state
 
+        var manager = new THREE.LoadingManager();
+        var loader = new THREE.OBJLoader(manager);
+
         // Terrain
         let heightMapWidth = 512;
         let heightMapDepth = 512;
@@ -30,7 +33,20 @@ class World {
 
         // Cactus
 
-        this.setupTrees(terrainMesh, worldMapWidth, worldMapDepth, worldMapMaxHeight);
+        //this.setupTrees(terrainMesh, worldMapWidth, worldMapDepth, worldMapMaxHeight);
+
+        loader.load( '../Oblig4/models/lowPolyTree/lowpolytree.obj', function ( object ) {
+
+            object.position.x = - 60;
+            object.rotation.x = 20* Math.PI / 180;
+            object.rotation.z = 20* Math.PI / 180;
+            object.scale.x = 30;
+            object.scale.y = 30;
+            object.scale.z = 30;
+            obj = object
+            scene.add( obj );
+
+        } );
 
         // Water
 
@@ -43,6 +59,7 @@ class World {
         // Fog
     }
 
+    /*
     setupTrees(terrain, worldMapWidth, worldMapDepth, worldMapMaxHeight) {
         "use strict";
         var maxNumObjects = 200;
@@ -73,7 +90,7 @@ class World {
 
         var numObjects = generatedAndValidPositions.length;
 
-        let objectMaterialLoader = THREE.JSONLoader();
+        let objectMaterialLoader = new THREE.OBJMTLLoader();
 
         objectMaterialLoader.load(
             '../Oblig4/models/lowPolyTree/lowpolytree.obj',
@@ -142,4 +159,5 @@ class World {
     onError(xhr) {
     "use strict";
 }
+*/
 }
