@@ -26,9 +26,11 @@ class World {
 
         // Palm trees?
 
+        // Camels
+
         // Water
 
-        // Camels
+        // Grass
 
         // Light
         let amb = new THREE.AmbientLight(0xFFFFFF);
