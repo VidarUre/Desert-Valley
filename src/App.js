@@ -54,7 +54,7 @@ class App {
 
     constructor() {
         this.state = State.getInstance(); // get the state
-        this.world = new World(this.state); // Get the world and inject the state
+        this.world = new World(this.state, obl); // Get the world and inject the state
 
         // Controls
         this.controls = new THREE.FirstPersonControls(this.state.camera);
