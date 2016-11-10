@@ -2,9 +2,17 @@ class World {
 
     constructor(state) {
         this.state = state; // Store the injected state
+        let scene = this.state.scene;
+        let manager = new THREE.LoadingManager();
+        let loader = new THREE.ObjectLoader(manager);
 
-        var manager = new THREE.LoadingManager();
-        var loader = new THREE.OBJLoader(manager);
+        // Light
+        let ambLight = new THREE.AmbientLight(0xFFFFFF);
+        scene.add(ambLight)
+
+        var dirLight = new THREE.DirectionalLight( 0xffffbb, 1 );
+        dirLight.position.set( - 1, 1, - 1 );
+        scene.add( dirLight );
 
         // Terrain
         let heightMapWidth = 512;
@@ -14,7 +22,7 @@ class World {
         let worldMapMaxHeight = 1000;
         var terrain = new Terrain();
         var terrainMesh = terrain.init(worldMapWidth, worldMapMaxHeight, worldMapDepth);
-        this.state.scene.add(terrainMesh);
+        scene.add(terrainMesh);
 
         // Skybox
         let skybox = new Skybox();
@@ -23,7 +31,7 @@ class World {
         let skyboxDepth = worldMapDepth;
         let skyboxHeight = 20000;
         this.cube = new THREE.Mesh(new THREE.CubeGeometry(skyboxWidth, skyboxHeight, skyboxDepth), new THREE.MeshFaceMaterial(skyboxMaterials));
-        this.state.scene.add(this.cube);
+        scene.add(this.cube);
 
         // Palace?
 
@@ -32,132 +40,33 @@ class World {
         // Camels
 
         // Cactus
-
-        //this.setupTrees(terrainMesh, worldMapWidth, worldMapDepth, worldMapMaxHeight);
-
-        loader.load( '../Oblig4/models/lowPolyTree/lowpolytree.obj', function ( object ) {
-
-            object.position.x = - 60;
-            object.rotation.x = 20* Math.PI / 180;
-            object.rotation.z = 20* Math.PI / 180;
-            object.scale.x = 30;
-            object.scale.y = 30;
-            object.scale.z = 30;
-            obj = object
-            scene.add( obj );
-
-        } );
+        let cactusFile = '../Oblig4/models/cactus.json';
+        this.addObject(scene, loader, cactusFile, 3600, 550, 3600, 500, 500, 500);
+        this.addObject(scene, loader, cactusFile, 4500, 600, 3600, 500, 500, 500);
+        this.addObject(scene, loader, cactusFile, 5000, 600, 4000, 500, 500, 500);
+        this.addObject(scene, loader, cactusFile, 5300, 600, 4300, 500, 500, 500);
+        this.addObject(scene, loader, cactusFile, 5600, 600, 3600, 500, 500, 500);
 
         // Water
+        //let water = new Water(this.state.renderer, this.state.camera, scene, dirLight);
+        //scene.add(water.createWater());
 
         // Grass
-
-        // Light
-        let amb = new THREE.AmbientLight(0xFFFFFF);
-        this.state.scene.add(amb)
 
         // Fog
     }
 
-    /*
-    setupTrees(terrain, worldMapWidth, worldMapDepth, worldMapMaxHeight) {
-        "use strict";
-        var maxNumObjects = 200;
-        var spreadCenter = new THREE.Vector3(-0.2*worldMapWidth, 0, -0.2*worldMapDepth);
-        var spreadRadius = 0.1*worldMapWidth;
-        //var geometryScale = 30;
+    addObject(scene, loader, file, posx, posy, posz, scalex, scaley, scalez) {
 
-        var minHeight = 0.05*worldMapMaxHeight;
-        var maxHeight = 0.3*worldMapMaxHeight;
-        var maxAngle = 30 * Math.PI / 180;
+        loader.load(file, function ( object ) {
 
-        var scaleMean = 100;
-        var scaleSpread = 40;
-        var scaleMinimum = 10;
-
-        var generatedAndValidPositions = generateRandomData(maxNumObjects,
-            this.generateGaussPositionAndCorrectHeight.bind(null, terrain, spreadCenter, spreadRadius),
-            this.positionValidator.bind(null, terrain, minHeight, maxHeight, maxAngle), 5);
-
-        var generatedAndValidScales = generateRandomData(generatedAndValidPositions.length,
-
-            // Generator function
-            function() { return Math.abs(scaleMean + randomGauss()*scaleSpread); },
-
-            // Validator function
-            function(scale) { return scale > scaleMinimum; }
-        );
-
-        var numObjects = generatedAndValidPositions.length;
-
-        let objectMaterialLoader = new THREE.OBJMTLLoader();
-
-        objectMaterialLoader.load(
-            '../Oblig4/models/lowPolyTree/lowpolytree.obj',
-            '../Oblig4/models/lowPolyTree/lowpolytree.mtl',
-            function (loadedObject) {
-                "use strict";
-                // Custom function to handle what's supposed to happen once we've loaded the model
-
-                var bbox = new THREE.Box3().setFromObject(loadedObject);
-                console.log(bbox);
-
-                for (var i = 0; i < numObjects; ++i) {
-                    var object = loadedObject.clone();
-
-                    // We should know where the bottom of our object is
-                    object.position.copy(generatedAndValidPositions[i]);
-                    object.position.y -= bbox.min.y*generatedAndValidScales[i];
-
-                    object.scale.set(
-                        generatedAndValidScales[i],
-                        generatedAndValidScales[i],
-                        generatedAndValidScales[i]
-                    );
-
-                    object.name = "LowPolyTree";
-
-                    terrain.add(object);
-                }
-            }, this.onProgress, this.onError);
+            object.position.x = posx;
+            object.position.y = posy;
+            object.position.z = posz;
+            object.scale.x = scalex;
+            object.scale.y = scaley;
+            object.scale.z = scalez;
+            scene.add(object);
+        });
     }
-
-    generateGaussPositionAndCorrectHeight(terrain, center, radius) {
-    "use strict";
-    var pos = randomGaussPositionMaker(center, radius);
-    //var pos = randomUniformPositionMaker(center, radius);
-    return terrain.computePositionAtPoint(pos);
-    }
-
-    positionValidator(terrain, minHeight, maxHeight, maxAngle, candidatePos) {
-    "use strict";
-
-    var normal = terrain.computeNormalAtPoint(candidatePos);
-    var notTooSteep = true;
-
-    var angle = normal.angleTo(new THREE.Vector3(0, 1, 0));
-    //var maxAngle = 30 * Math.PI/180;
-
-    if (angle > maxAngle) {
-        notTooSteep = false;
-    }
-
-    var withinTerrainBoundaries = terrain.withinBoundaries(candidatePos);
-    var withinHeight = (candidatePos.y >= minHeight) && (candidatePos.y <= maxHeight);
-
-    return withinTerrainBoundaries && withinHeight && notTooSteep;
-    }
-
-    onProgress(xhr) {
-    "use strict";
-    if (xhr.lengthComputable) {
-        var percentComplete = xhr.loaded / xhr.total * 100;
-        console.log(Math.round(percentComplete, 2) + '% downloaded');
-    }
-}
-
-    onError(xhr) {
-    "use strict";
-}
-*/
 }

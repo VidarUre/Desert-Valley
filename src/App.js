@@ -21,6 +21,7 @@ class State {
 
         // Scene
         this.scene = new THREE.Scene();
+        let scene = this.scene;
 
         // Camera
         this.camera = new THREE.PerspectiveCamera(this.fov, this.aspect, this.near, this.far);
