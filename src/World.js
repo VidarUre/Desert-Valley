@@ -33,7 +33,7 @@ class World {
         this.cube = new THREE.Mesh(new THREE.CubeGeometry(skyboxWidth, skyboxHeight, skyboxDepth), new THREE.MeshFaceMaterial(skyboxMaterials));
         scene.add(this.cube);
 
-        // Palace?
+        //Palace?
 
         // Palm trees?
 
