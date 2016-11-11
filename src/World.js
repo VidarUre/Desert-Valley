@@ -7,12 +7,24 @@ class World {
         let loader = new THREE.ObjectLoader(manager);
 
         // Light
-        let ambLight = new THREE.AmbientLight(0xFFFFFF);
-        scene.add(ambLight)
+        //let ambLight = new THREE.AmbientLight(0xFFFFFF);
+        //scene.add(ambLight)
+
 
         var dirLight = new THREE.DirectionalLight( 0xffffbb, 1 );
-        dirLight.position.set( - 1, 1, - 1 );
-        scene.add( dirLight );
+        dirLight.position.set(4000, 600, 4000);
+        dirLight.castShadow = true;
+        dirLight.shadowCameraVisible = true;
+        scene.add(dirLight);
+
+        /*
+        let pointLight = new THREE.PointLight(0xFFFFFF, 5);
+        pointLight.castShadow = true;
+        scene.add(pointLight);
+        */
+
+        // Shadows
+
 
         // Terrain
         let heightMapWidth = 512;
@@ -22,6 +34,7 @@ class World {
         let worldMapMaxHeight = 1000;
         var terrain = new Terrain();
         var terrainMesh = terrain.init(worldMapWidth, worldMapMaxHeight, worldMapDepth);
+        terrainMesh.receiveShadow = true;
         scene.add(terrainMesh);
 
         // Skybox
@@ -48,18 +61,34 @@ class World {
         this.addObject(scene, loader, cactusFile, 5600, 600, 3600, 500, 500, 500);
 
         // Water
-        //let water = new Water(this.state.renderer, this.state.camera, scene, dirLight);
-        //scene.add(water.createWater());
+        var geometry = new THREE.PlaneBufferGeometry( 30000, 30000);
+
+        var texture = THREE.ImageUtils.loadTexture( "textures/water.jpg" );
+        // assuming you want the texture to repeat in both directions:
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+
+        texture.repeat.set( 4, 4 );
+
+        var material = new THREE.MeshLambertMaterial({ map : texture, transparent: true, opacity: 0.7  });
+        var plane = new THREE.Mesh( geometry, material );
+        plane.material.side = THREE.DoubleSide;
+        plane.position.y = 250;
+        plane.rotateX(Math.PI / 2);
 
         // Grass
 
+
         // Fog
+
+        // NB: Husk å blende overganger mellom teksturer!
     }
 
     addObject(scene, loader, file, posx, posy, posz, scalex, scaley, scalez) {
 
         loader.load(file, function ( object ) {
 
+            object.castShadow = true;
             object.position.x = posx;
             object.position.y = posy;
             object.position.z = posz;
