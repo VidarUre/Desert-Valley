@@ -23,9 +23,6 @@ class World {
         scene.add(pointLight);
         */
 
-        // Shadows
-
-
         // Terrain
         let heightMapWidth = 512;
         let heightMapDepth = 512;
@@ -45,12 +42,6 @@ class World {
         let skyboxHeight = 20000;
         this.cube = new THREE.Mesh(new THREE.CubeGeometry(skyboxWidth, skyboxHeight, skyboxDepth), new THREE.MeshFaceMaterial(skyboxMaterials));
         scene.add(this.cube);
-
-        //Palace?
-
-        // Palm trees?
-
-        // Camels
 
         // Cactus
         let cactusFile = '../Oblig4/models/cactus.json';
