@@ -11,17 +11,17 @@ class World {
         //scene.add(ambLight)
 
 
-        var dirLight = new THREE.DirectionalLight( 0xffffbb, 1 );
+        var dirLight = new THREE.DirectionalLight(0xffffbb, 1);
         dirLight.position.set(4000, 600, 4000);
         dirLight.castShadow = true;
         dirLight.shadowCameraVisible = true;
         scene.add(dirLight);
 
         /*
-        let pointLight = new THREE.PointLight(0xFFFFFF, 5);
-        pointLight.castShadow = true;
-        scene.add(pointLight);
-        */
+         let pointLight = new THREE.PointLight(0xFFFFFF, 5);
+         pointLight.castShadow = true;
+         scene.add(pointLight);
+         */
 
         // Terrain
         let heightMapWidth = 512;
@@ -52,32 +52,61 @@ class World {
         this.addObject(scene, loader, cactusFile, 5600, 600, 3600, 500, 500, 500);
 
         // Water
-        var geometry = new THREE.PlaneBufferGeometry( 30000, 30000);
+        var geometry = new THREE.PlaneBufferGeometry(worldMapWidth, worldMapDepth);
 
-        var texture = THREE.ImageUtils.loadTexture( "textures/water.jpg" );
+        var texture = THREE.ImageUtils.loadTexture("../Oblig4/textures/water.jpg");
         // assuming you want the texture to repeat in both directions:
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
 
-        texture.repeat.set( 4, 4 );
+        texture.repeat.set(4, 4);
 
-        var material = new THREE.MeshLambertMaterial({ map : texture, transparent: true, opacity: 0.7  });
-        var plane = new THREE.Mesh( geometry, material );
+        var material = new THREE.MeshLambertMaterial({map: texture, transparent: true, opacity: 0.7});
+        var plane = new THREE.Mesh(geometry, material);
         plane.material.side = THREE.DoubleSide;
-        plane.position.y = 250;
+        plane.position.y = 194;
         plane.rotateX(Math.PI / 2);
 
-        // Grass
+        scene.add(plane);
 
+        // Grass
+        var grassGeometry = new THREE.Geometry();
+        var sprite = new THREE.TextureLoader().load("../Oblig4/textures/grassbillboard.png");
+
+        for (let i = 0; i < 100000; i++) {
+            var vertex = new THREE.Vector3();
+            vertex.x = i * Math.random() - 1000;
+            vertex.y = 330;
+            vertex.z = i * Math.random() - 1000 ;
+            grassGeometry.vertices.push(vertex);
+        }
+
+        var vertex = new THREE.Vector3();
+        vertex.x = 600;
+        vertex.y = 330;
+        vertex.z = 600;
+        grassGeometry.vertices.push(vertex);
+
+        var grassMaterial = new THREE.PointsMaterial({
+            size: 100,
+            sizeAttenuation: true,
+            map: sprite,
+            alphaTest: 0.5,
+            transparent: true
+        });
+        grassMaterial.color.setHSL(1.0, 0.3, 0.7);
+        var particles = new THREE.Points(grassGeometry, grassMaterial);
+        scene.add(particles);
 
         // Fog
+        scene.fog = new THREE.FogExp2( 0xefd1b5, 0.001 );
 
         // NB: Husk å blende overganger mellom teksturer!
     }
 
     addObject(scene, loader, file, posx, posy, posz, scalex, scaley, scalez) {
 
-        loader.load(file, function ( object ) {
+        loader.load(file, function (object) {
 
             object.castShadow = true;
             object.position.x = posx;

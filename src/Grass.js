@@ -3,7 +3,5 @@
 
 class Grass {
 
-    constructor() {
 
-    }
 }
