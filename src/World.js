@@ -7,8 +7,8 @@ class World {
         let loader = new THREE.ObjectLoader(manager);
 
         // Light
-        //let ambLight = new THREE.AmbientLight(0xFFFFFF);
-        //scene.add(ambLight)
+        let ambLight = new THREE.AmbientLight(0xFFFFFF);
+        scene.add(ambLight)
 
 
         var dirLight = new THREE.DirectionalLight(0xffffbb, 1);
