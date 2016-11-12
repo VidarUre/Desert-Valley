@@ -21,6 +21,7 @@ class Terrain {
         var terrainMaterialImp = this.terrainMaterial(sandTexture, rockTexture);
 
         var terrainMesh = new HeightMapMesh(heightMapGeometry, terrainMaterialImp);
+        terrainMesh.receiveShadow = true;
 
         return terrainMesh;
     }

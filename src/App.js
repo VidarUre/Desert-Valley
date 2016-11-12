@@ -36,7 +36,8 @@ class State {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setClearColor(0x000000);
         this.renderer.setSize(this.width, this.height);
-        this.renderer.shadowMapEnabled = true;
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.BasicShadowMap;
 
         return instance;
     }
