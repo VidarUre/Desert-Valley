@@ -113,7 +113,7 @@ function randomGaussPositionMaker(center, radius) {
     var pos = new THREE.Vector3();
 
     pos.x = radius * randomGauss();
-    pos.y = radius * randomGauss();
+    pos.y = 0;
     pos.z = radius * randomGauss();
 
     pos.add(center);

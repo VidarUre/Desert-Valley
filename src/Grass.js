@@ -1,4 +1,3 @@
-
 "use strict"
 
 class Grass {
@@ -10,25 +9,28 @@ class Grass {
     generateGrass() {
         var grassGeometry = new THREE.Geometry();
         var sprite = new THREE.TextureLoader().load("../Oblig4/textures/grassbillboard.png");
+        var spreadCenter1 = new THREE.Vector3(4500, 400, 2500);
+        var spreadCenter2 = new THREE.Vector3(100, 350, 300);
+        var spreadCenter3 = new THREE.Vector3(3000, 390, -4000);
+        var spreadCenter4 = new THREE.Vector3(-4900, 390, 5300);
+        var spreadRadius1 = 700;
+        var spreadRadius2 = 800;
+        var spreadRadius3 = 800;
+        var spreadRadius4 = 500;
 
-        this.addGrass(245, 350, 250, grassGeometry);
-        this.addGrass(282, 350, 327, grassGeometry);
-        this.addGrass(1383, 350, 212, grassGeometry);
-        this.addGrass(1389, 350, 489, grassGeometry);
-        this.addGrass(289, 350, 219, grassGeometry);
-        this.addGrass(238, 350, 429, grassGeometry);
-        this.addGrass(390, 350, 182, grassGeometry);
-        this.addGrass(428, 350, 249, grassGeometry);
-        this.addGrass(981, 350, 918, grassGeometry);
-        this.addGrass(891, 350, 138, grassGeometry);
-        this.addGrass(289, 350, 218, grassGeometry);
-        this.addGrass(908, 350, 289, grassGeometry);
-        this.addGrass(189, 350, 248, grassGeometry);
-        this.addGrass(849, 350, 127, grassGeometry);
-        this.addGrass(901, 350, 1843, grassGeometry);
-        this.addGrass(982, 350, 1895, grassGeometry);
-        this.addGrass(819, 350, 2891, grassGeometry);
-        this.addGrass(489, 350, 1839, grassGeometry);
+        for (let i = 0; i < 300; i++) {
+            this.addGrass(grassGeometry, spreadCenter1, spreadRadius1);
+        }
+        for (let i = 0; i < 300; i++) {
+            this.addGrass(grassGeometry, spreadCenter2, spreadRadius2);
+        }
+        for (let i = 0; i < 300; i++) {
+            this.addGrass(grassGeometry, spreadCenter3, spreadRadius3);
+        }
+        for (let i = 0; i < 300; i++) {
+            this.addGrass(grassGeometry, spreadCenter4, spreadRadius4);
+        }
+
 
         var grassMaterial = new THREE.PointsMaterial({
             size: 100,
@@ -43,8 +45,8 @@ class Grass {
         return particles;
     }
 
-    addGrass(x, y, z, geometry) {
-        var vertex = new THREE.Vector3(x, y, z);
+    addGrass(geometry, center, radius) {
+        var vertex = randomGaussPositionMaker(center, radius);
         geometry.vertices.push(vertex);
     }
 }
