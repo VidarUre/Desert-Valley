@@ -54,8 +54,8 @@ class World {
         // Skybox
         let skybox = new Skybox();
         let skyboxMaterials = skybox.generateSkyboxMaterials();
-        let skyboxWidth = worldMapWidth;
-        let skyboxDepth = worldMapDepth;
+        let skyboxWidth = 3*worldMapWidth;
+        let skyboxDepth = 3*worldMapDepth;
         let skyboxHeight = 20000;
         this.cube = new THREE.Mesh(new THREE.CubeGeometry(skyboxWidth, skyboxHeight, skyboxDepth), new THREE.MeshFaceMaterial(skyboxMaterials));
         scene.add(this.cube);
