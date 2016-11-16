@@ -68,6 +68,10 @@ class World {
         let ufo = new UFO();
         ufo.createUFO(this.state.camera, loader);
 
+        // Pyramid
+        let pyramid = new Pyramid();
+        pyramid.createPyramid(scene, loader);
+
         // Water
         let waterInstance = new Water();
         let waterPlane = waterInstance.createWater(worldMapWidth, worldMapDepth);
