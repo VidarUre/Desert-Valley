@@ -16,7 +16,7 @@ class Water {
 
         texture.repeat.set(4, 4);
 
-        var material = new THREE.MeshLambertMaterial({map: texture, transparent: true, opacity: 0.7});
+        var material = new THREE.MeshPhongMaterial({map: texture, transparent: true, opacity: 0.7, shininess: 40});
         var plane = new THREE.Mesh(geometry, material);
         plane.material.side = THREE.DoubleSide;
         plane.position.y = 194;

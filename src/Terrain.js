@@ -17,8 +17,7 @@ class Terrain {
         heightMapGeometry.scale(worldMapWidth, worldMapMaxHeight, worldMapDepth);
 
         var sandTexture = this.wrapTexture('textures/sand.jpg');
-        var rockTexture = this.wrapTexture('textures/rock.jpg');
-        var terrainMaterialImp = this.terrainMaterial(sandTexture, rockTexture);
+        var terrainMaterialImp = this.terrainMaterial2(sandTexture);
 
         var terrainMesh = new HeightMapMesh(heightMapGeometry, terrainMaterialImp);
         terrainMesh.receiveShadow = true;
@@ -35,7 +34,6 @@ class Terrain {
 
     terrainMaterial(sandTexture, rockTexture) {
         var tmi = new THREE.ShaderMaterial({
-            // We are reusing vertex shader from MeshBasicMaterial
 
             defines: {
                 'USE_MAP': true
@@ -62,6 +60,13 @@ class Terrain {
 
             vertexShader: THREE.ShaderLib['basic'].vertexShader,
             fragmentShader: document.getElementById('terrain-fshader').textContent,
+        });
+        return tmi;
+    }
+
+    terrainMaterial2(sandtexture) {
+        var tmi = new THREE.MeshPhongMaterial({
+            map: sandtexture
         });
         return tmi;
     }
