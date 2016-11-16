@@ -78,44 +78,6 @@
 
 </script>
 
-<script id="terrain-fshader" type="x-shader/x-fragment">
-        // Other attributes and uniforms are supposed to be filled in by Three.js
-		// To avoid it being filled in automatically, use RawShaderMaterial
-
-        varying vec2 vUv;
-
-        uniform sampler2D heightMap;
-
-        uniform sampler2D sand;
-        uniform sampler2D rock;
-
-        uniform vec2 terrainTextureScale;
-
-        uniform float sandLevel;
-        uniform float rockLevel;
-
-		void main() {
-
-            //float height = 0.3;
-            float height = texture2D(heightMap, vUv).r;
-
-            vec2 scaledUv = vUv * terrainTextureScale;
-
-            vec3 finalColor = vec3(0.0, 0.0, 0.0);
-
-            if(height < sandLevel) {
-                finalColor = texture2D(rock, scaledUv).rgb;
-            } else {
-                finalColor = texture2D(sand, scaledUv).rgb;
-            }
-
-			gl_FragColor = vec4(finalColor, 1.0);
-
-		}
-
-
-</script>
-
 <script>
     window.onload = () => {
         new App();
