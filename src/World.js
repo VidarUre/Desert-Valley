@@ -66,8 +66,8 @@ class World {
 
         // Water
         let waterInstance = new Water();
-        let waterPlane = waterInstance.createWater(worldMapWidth, worldMapDepth);
-        scene.add(waterPlane);
+        let water = waterInstance.createWater2(worldMapWidth, worldMapDepth, this.state.renderer, this.state.camera, scene, dirLight);
+        scene.add(water);
 
         // Grass
         let grassInstance = new Grass();

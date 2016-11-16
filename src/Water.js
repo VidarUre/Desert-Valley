@@ -24,4 +24,27 @@ class Water {
 
         return plane;
     }
+
+    createWater2(worldMapWidth, worldMapDepth, renderer, camera, scene, light) {
+        var waterNormals = new THREE.TextureLoader().load( 'textures/waternormals.jpg' );
+        waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
+        this.water = new THREE.Water( renderer, camera, scene, {
+            textureWidth: 512,
+            textureHeight: 512,
+            waterNormals: waterNormals,
+            alpha: 	1.0,
+            sunDirection: light.position.clone().normalize(),
+            sunColor: 0xffffff,
+            waterColor: 0xadd8e6,
+            distortionScale: 50.0,
+        } );
+        var mirrorMesh = new THREE.Mesh(
+            new THREE.PlaneBufferGeometry( worldMapWidth, worldMapDepth ),
+            this.water.material
+        );
+        mirrorMesh.add( this.water );
+        mirrorMesh.rotation.x = - Math.PI * 0.5;
+        mirrorMesh.position.y = 194;
+        return mirrorMesh;
+    }
 }
