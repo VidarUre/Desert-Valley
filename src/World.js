@@ -64,6 +64,14 @@ class World {
         let cactus = new Cactus();
         cactus.setUpCacti(scene, loader);
 
+        // UFO to camera
+        let ufo = new UFO();
+        ufo.createUFO(this.state.camera, loader);
+
+        // Pyramid
+        let pyramid = new Pyramid();
+        pyramid.createPyramid(scene, loader);
+
         // Water
         let waterInstance = new Water();
         let water = waterInstance.createWater2(worldMapWidth, worldMapDepth, this.state.renderer, this.state.camera, scene, dirLight);
