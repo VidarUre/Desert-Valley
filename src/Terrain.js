@@ -7,13 +7,10 @@ class Terrain {
         this.terrainData = getPixelValues(this.heightMapImage, 'r');
         this.heightMapWidth = this.heightMapImage.width;
         this.heightMapDepth = this.heightMapImage.height;
-
-        this.heightMapTexture = THREE.ImageUtils.loadTexture(this.heightMapImage.src);
     }
 
     init(worldMapWidth, worldMapMaxHeight, worldMapDepth) {
         var heightMapGeometry = new HeightMapBufferGeometry(this.terrainData, this.heightMapWidth, this.heightMapDepth);
-        // We scale the geometry to avoid scaling the node, since scales propagate.
         heightMapGeometry.scale(worldMapWidth, worldMapMaxHeight, worldMapDepth);
 
         var sandTexture = this.wrapTexture('textures/sand4.jpg');

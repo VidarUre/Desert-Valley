@@ -7,21 +7,6 @@ class World {
         let loader = new THREE.ObjectLoader(manager);
 
         // Light
-        /*
-         let pointLight = this.createLight( 0xffffff );
-         scene.add( pointLight );
-         scene.add(new THREE.PointLightHelper(pointLight, 10));
-         */
-
-        //let ambLight = new THREE.AmbientLight(0xFFFFFF);
-        //scene.add(ambLight)
-
-        /*
-         var ambientLight = new THREE.AmbientLight(new THREE.Color(0.3, 0.3, 0.3));
-         ambientLight.name = 'ambientLight';
-         scene.add(ambientLight);
-         */
-
         var dirLight = new THREE.DirectionalLight(0xffffbb, 1);
         dirLight.position.set(5600, 7000, 300);
         dirLight.castShadow = true;
@@ -34,12 +19,6 @@ class World {
         scene.add(dirLight);
 
         scene.add(new THREE.DirectionalLightHelper(dirLight, 10));
-
-        /*
-         let pointLight = new THREE.PointLight(0xFFFFFF, 5);
-         pointLight.castShadow = true;
-         scene.add(pointLight);
-         */
 
         // Terrain
         let heightMapWidth = 512;
@@ -81,26 +60,6 @@ class World {
         let grassInstance = new Grass();
         let grass = grassInstance.generateGrass();
         scene.add(grass);
-
-        // Fog
-        //scene.fog = new THREE.FogExp2( 0xefd1b5, 0.001 );
-
-        // NB: Husk å blende overganger mellom teksturer!
-    }
-
-    createLight(color) {
-        var pointLight = new THREE.PointLight(color, 1, 30);
-        pointLight.castShadow = true;
-        pointLight.shadow.camera.near = 1;
-        pointLight.shadow.camera.far = 30;
-        pointLight.position.set(5600, 1000, 300);
-        // pointLight.shadowCameraVisible = true;
-        pointLight.shadow.bias = 0.01;
-        var geometry = new THREE.SphereGeometry(0.3, 12, 6);
-        var material = new THREE.MeshBasicMaterial({color: color});
-        var sphere = new THREE.Mesh(geometry, material);
-        pointLight.add(sphere);
-        return pointLight
     }
 
     animateWater() {

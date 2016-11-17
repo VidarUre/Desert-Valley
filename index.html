@@ -44,11 +44,7 @@
 </canvas>
 
 <script id="instanced-vshader" type="x-shader/x-vertex">
-		// Other attributes and uniforms are supposed to be filled in by Three.js
-		// To avoid it being filled in automatically, use RawShaderMaterial
 
-        // Instanced attribute, updated only when a new instance is drawn (ie. when all vertices have been drawn and
-        // we're going to draw a slightly different one.
 		attribute vec3 translate;
 		attribute float scale;
 
@@ -64,13 +60,9 @@
 
 		}
 
-
-
 </script>
 
 <script id="fshader" type="x-shader/x-fragment">
-        // Other attributes and uniforms are supposed to be filled in by Three.js
-		// To avoid it being filled in automatically, use RawShaderMaterial
 
            uniform vec3 color;
 
@@ -79,7 +71,6 @@
 			gl_FragColor = vec4(color, 1.0);
 
 		}
-
 
 </script>
 
