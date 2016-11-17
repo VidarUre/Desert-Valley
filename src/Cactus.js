@@ -15,7 +15,7 @@ class Cactus {
 
         this.addObject(scene, loader, cactusFile, 1000, 300, -500, 300, 300, 300);
         this.addObject(scene, loader, cactusFile, 600, 300, 5000, 300, 300, 300);
-        this.addObject(scene, loader, cactusFile, -100, 300, -600, 300, 300, 300);
+        this.addObject(scene, loader, cactusFile, -100, 0, -600, 300, 300, 300);
 
         this.addObject(scene, loader, cactusFile, 3000, 380, -4253, 300, 300, 300);
         this.addObject(scene, loader, cactusFile, 3200, 380, -4576, 300, 300, 300);

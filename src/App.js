@@ -82,8 +82,8 @@ class App {
 
     animate() {
         requestAnimationFrame(this.animate.bind(this));
+        this.world.animateWater();
         this.render();
-        this.state.scene.water.uniforms.time.value += 1.0/60.0;
         this.stats.update();
     }
 

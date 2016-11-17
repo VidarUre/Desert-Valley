@@ -74,8 +74,8 @@ class World {
 
         // Water
         let waterInstance = new Water();
-        let water = waterInstance.createWater2(worldMapWidth, worldMapDepth, this.state.renderer, this.state.camera, scene, dirLight);
-        scene.add(water);
+        this.water = waterInstance.createWaterMesh(worldMapWidth, worldMapDepth, this.state.renderer, this.state.camera, scene, dirLight);
+        scene.add(this.water);
 
         // Grass
         let grassInstance = new Grass();
@@ -86,22 +86,6 @@ class World {
         //scene.fog = new THREE.FogExp2( 0xefd1b5, 0.001 );
 
         // NB: Husk å blende overganger mellom teksturer!
-    }
-
-    addObject(scene, loader, file, posx, posy, posz, scalex, scaley, scalez) {
-
-        loader.load(file, function (object) {
-
-            object.castShadow = true;
-            object.receiveShadow = true;
-            object.position.x = posx;
-            object.position.y = posy;
-            object.position.z = posz;
-            object.scale.x = scalex;
-            object.scale.y = scaley;
-            object.scale.z = scalez;
-            scene.add(object);
-        });
     }
 
     createLight(color) {
@@ -117,6 +101,10 @@ class World {
         var sphere = new THREE.Mesh(geometry, material);
         pointLight.add(sphere);
         return pointLight
+    }
+
+    animateWater() {
+        this.water.material.uniforms.time.value += 1.0/60.0;
     }
 
 }
