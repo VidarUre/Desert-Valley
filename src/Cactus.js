@@ -5,6 +5,7 @@ class Cactus {
 
     }
 
+    // Adds all the cacti to the scene with the given object file and coordinates
     setUpCacti(scene, loader) {
         let cactusFile = '../Oblig4/models/cactus.json';
         this.addObject(scene, loader, cactusFile, 2500, 300, 3238, 500, 500, 500);
@@ -26,6 +27,7 @@ class Cactus {
         this.addObject(scene, loader, cactusFile, -5374, 350, 4176, 300, 300, 300);
     }
 
+    // Adds a single object to the scene
     addObject(scene, loader, file, posx, posy, posz, scalex, scaley, scalez) {
 
         loader.load(file, function (object) {

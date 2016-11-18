@@ -6,6 +6,7 @@ class Grass {
 
     }
 
+    // Generates patches of grass (by use of billboarding) by specifying spread centres and spread radiuses
     generateGrass() {
         var grassGeometry = new THREE.Geometry();
         var sprite = new THREE.TextureLoader().load("../Oblig4/textures/grassbillboard.png");
@@ -45,6 +46,7 @@ class Grass {
         return particles;
     }
 
+    // Generates a single grass unit by the use of a Gauss position maker
     addGrass(geometry, center, radius) {
         var vertex = randomGaussPositionMaker(center, radius);
         geometry.vertices.push(vertex);

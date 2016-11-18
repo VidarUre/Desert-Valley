@@ -1,5 +1,6 @@
 class World {
 
+    // "Glues" all the application components together into the scene
     constructor(state) {
         this.state = state; // Store the injected state
         let scene = this.state.scene;
@@ -62,6 +63,7 @@ class World {
         scene.add(grass);
     }
 
+    // Changes values in the water material for every rendered frame, creating wave movement
     animateWater() {
         this.water.material.uniforms.time.value += 1.0/60.0;
     }

@@ -7,6 +7,7 @@ class Water {
 
     }
 
+    // Creates the water mesh with the water (getWater()) of a given size
     createWaterMesh(worldMapWidth, worldMapDepth, renderer, camera, scene, light) {
         var water = this.getWater(renderer, camera, scene, light);
         var mirrorMesh = new THREE.Mesh(
@@ -19,6 +20,7 @@ class Water {
         return mirrorMesh;
     }
 
+    // Creates the water (with water normals) later used to create the water mesh
     getWater(renderer, camera, scene, light) {
         var waterNormals = new THREE.TextureLoader().load( 'textures/waternormals.jpg' );
         waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;

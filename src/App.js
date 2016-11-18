@@ -42,7 +42,6 @@ class State {
         return instance;
     }
 
-    // Use this to get a reference to State object (can also just use new, same stuff, but this is alike to Java)
     static getInstance() {
         if (instance) {
             return instance;
@@ -80,6 +79,7 @@ class App {
         this.animate();
     }
 
+    // Animates the world (water etc.)
     animate() {
         requestAnimationFrame(this.animate.bind(this));
         this.world.animateWater();
@@ -87,6 +87,7 @@ class App {
         this.stats.update();
     }
 
+    // Renders the scene with recursive calls
     render() {
         this.controls.update(this.state.clock.getDelta());
         this.state.renderer.clear();
