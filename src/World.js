@@ -19,7 +19,7 @@ class World {
         dirLight.shadowCameraBottom = -5;
         scene.add(dirLight);
 
-        scene.add(new THREE.DirectionalLightHelper(dirLight, 10));
+        //scene.add(new THREE.DirectionalLightHelper(dirLight, 10));
 
         // Terrain
         let heightMapWidth = 512;
