@@ -40,6 +40,10 @@ class World {
         this.cube = new THREE.Mesh(new THREE.CubeGeometry(skyboxWidth, skyboxHeight, skyboxDepth), new THREE.MeshFaceMaterial(skyboxMaterials));
         scene.add(this.cube);
 
+        // Fog
+        // let fog = new Fog();
+        // fog.makeFog(scene);
+
         // Cactus
         let cactus = new Cactus();
         cactus.setUpCacti(scene, loader);

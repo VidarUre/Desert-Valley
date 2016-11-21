@@ -41,7 +41,7 @@ class Grass {
             transparent: true
         });
 
-        grassMaterial.color.setHSL(1.0, 0.3, 0.7);
+        grassMaterial.color.setHSL(1.0, 0.7, 0.7);
         var particles = new THREE.Points(grassGeometry, grassMaterial);
         return particles;
     }
