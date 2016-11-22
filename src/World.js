@@ -54,6 +54,10 @@ class World {
         let pyramid = new Pyramid();
         pyramid.createPyramid(scene, loader);
 
+        // Brick with bump mapping
+        let cube = new Cube();
+        cube.createCube(scene);
+
         // Water
         let waterInstance = new Water();
         this.water = waterInstance.createWaterMesh(worldMapWidth, worldMapDepth, this.state.renderer, this.state.camera, scene, dirLight);
