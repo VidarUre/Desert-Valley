@@ -60,7 +60,7 @@ class App {
         // Controls
         this.controls = new THREE.FirstPersonControls(this.state.camera);
         this.controls.movementSpeed = 1000;
-        this.controls.lookSpeed = 0.1
+        this.controls.lookSpeed = 0.1;
 
         this.composer = new THREE.EffectComposer(this.state.renderer);
 
