@@ -84,6 +84,7 @@ class App {
     animate() {
         requestAnimationFrame(this.animate.bind(this));
         this.world.animateWater();
+        this.world.animateCube();
         this.render();
         this.stats.update();
     }

@@ -1,5 +1,6 @@
 
 class UFO {
+
     constructor() {
 
     }
@@ -23,10 +24,7 @@ class UFO {
             object.scale.x = scalex;
             object.scale.y = scaley;
             object.scale.z = scalez;
-            var rotation = [0.0, 0.10, 0.0];
-            object.rotation.x += rotation[0];
-            object.rotation.y += rotation[1];
-            object.rotation.z += rotation[2];
+
             scene.add(object);
 
         });

@@ -55,8 +55,8 @@ class World {
         pyramid.createPyramid(scene, loader);
 
         // Brick with bump mapping
-        var cube = new Cube();
-        cube.createCube(scene);
+        this.cube = new Cube();
+        this.cube.createCube(scene);
 
         // Water
         var waterInstance = new Water();
@@ -72,6 +72,10 @@ class World {
     // Changes values in the water material for every rendered frame, creating wave movement
     animateWater() {
         this.water.material.uniforms.time.value += 1.0/60.0;
+    }
+
+    animateCube() {
+        this.cube.rotateCube();
     }
 
 }
