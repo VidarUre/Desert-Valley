@@ -22,6 +22,9 @@ class Cube {
             })
         );
         scene.add(brick);
+        var ambiColor = 0x404040 ;
+        var ambientLight = new THREE.AmbientLight(ambiColor);
+        brick.add(ambientLight);
         brick.position.set(1000, 1000, 1000);
         brick.receiveShadow = true;
         brick.castShadow = true;
