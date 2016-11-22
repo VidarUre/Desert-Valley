@@ -11,10 +11,12 @@ class World {
         var dirLight = new THREE.DirectionalLight(0xffffbb, 1);
         dirLight.position.set(5600, 7000, 300);
         dirLight.castShadow = true;
-        dirLight.shadow.camera.right = 5;
-        dirLight.shadow.camera.left = -5;
-        dirLight.shadow.camera.top = 5;
-        dirLight.shadow.camera.bottom = -5;
+        dirLight.shadowCameraRight = 5;
+        dirLight.shadowCameraLeft = -5;
+        dirLight.shadowCameraTop = 5;
+        dirLight.shadowCameraBottom = -5;
+        dirLight.shadowCameraVisible = true;
+
         scene.add(dirLight);
 
         //scene.add(new THREE.DirectionalLightHelper(dirLight, 10));

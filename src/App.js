@@ -37,8 +37,17 @@ class State {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setClearColor(0x000000);
         this.renderer.setSize(this.width, this.height);
-        this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.BasicShadowMap;
+        this.renderer.shadowMapEnabled = true;
+        this.renderer.shadowMapSoft = true;
+
+        this.renderer.shadowCameraNear = this.near;
+        this.renderer.shadowCameraFar = this.far;
+        this.renderer.shadowCameraFov = this.fov;
+
+        this.renderer.shadowMapBias = 0.0039;
+        this.renderer.shadowMapDarkness = 0.5;
+        this.renderer.shadowMapWidth = 1024;
+        this.renderer.shadowMapHeight = 1024;
 
         return instance;
     }
