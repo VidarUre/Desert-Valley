@@ -26,7 +26,7 @@ class Terrain {
 
     // Wraps the texture and returns it
     wrapTexture(textureString) {
-        var objectTexture = THREE.ImageUtils.loadTexture(textureString);
+        var objectTexture = new THREE.TextureLoader().load(textureString);
         objectTexture.wrapS = THREE.RepeatWrapping;
         objectTexture.wrapT = THREE.RepeatWrapping;
         return objectTexture;

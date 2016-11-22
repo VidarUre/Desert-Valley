@@ -20,7 +20,7 @@ class Skybox {
         // Load all the images into a material array
         this.materials = [];
         for (var i = 0; i < 6; i++) {
-            var texture = THREE.ImageUtils.loadTexture(this.textureURLs[i]);
+            var texture = new THREE.TextureLoader().load(this.textureURLs[i]);
             this.materials.push( new THREE.MeshBasicMaterial( {
                 color: "white",
                 side: THREE.BackSide,
