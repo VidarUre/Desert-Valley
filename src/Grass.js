@@ -19,16 +19,16 @@ class Grass {
         var spreadRadius3 = 800;
         var spreadRadius4 = 500;
 
-        for (let i = 0; i < 300; i++) {
+        for (var i = 0; i < 300; i++) {
             this.addGrass(grassGeometry, spreadCenter1, spreadRadius1);
         }
-        for (let i = 0; i < 300; i++) {
+        for (var i = 0; i < 300; i++) {
             this.addGrass(grassGeometry, spreadCenter2, spreadRadius2);
         }
-        for (let i = 0; i < 300; i++) {
+        for (var i = 0; i < 300; i++) {
             this.addGrass(grassGeometry, spreadCenter3, spreadRadius3);
         }
-        for (let i = 0; i < 300; i++) {
+        for (var i = 0; i < 300; i++) {
             this.addGrass(grassGeometry, spreadCenter4, spreadRadius4);
         }
 

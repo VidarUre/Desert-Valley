@@ -1,4 +1,4 @@
-let instance = null;
+var instance = null;
 
 class State {
     constructor() {

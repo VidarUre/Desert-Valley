@@ -7,9 +7,9 @@ class Cube {
     }
 
     createCube(scene) {
-        let brick, brickTexture, brickBumpMap;
+        var brick, brickTexture, brickBumpMap;
 
-        let textureLoader = new THREE.TextureLoader();
+        var textureLoader = new THREE.TextureLoader();
         brickTexture = new textureLoader.load("../Oblig4/textures/brick/brick.jpg");
         brickBumpMap = new textureLoader.load("../Oblig4/textures/brick/brickMap.png");
 

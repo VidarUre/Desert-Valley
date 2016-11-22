@@ -5,7 +5,7 @@ class UFO {
     }
 
     createUFO(camera, loader) {
-        let UFOFile = "../Oblig4/models/space-invader.json";
+        var UFOFile = "../Oblig4/models/space-invader.json";
         this.loadObject(camera, loader,UFOFile, 0, -100, -250, 50, 50, 50);
 
 
@@ -23,7 +23,7 @@ class UFO {
             object.scale.x = scalex;
             object.scale.y = scaley;
             object.scale.z = scalez;
-            let rotation = [0.0, 0.10, 0.0];
+            var rotation = [0.0, 0.10, 0.0];
             object.rotation.x += rotation[0];
             object.rotation.y += rotation[1];
             object.rotation.z += rotation[2];

@@ -3,9 +3,9 @@ class World {
     // "Glues" all the application components together into the scene
     constructor(state) {
         this.state = state; // Store the injected state
-        let scene = this.state.scene;
-        let manager = new THREE.LoadingManager();
-        let loader = new THREE.ObjectLoader(manager);
+        var scene = this.state.scene;
+        var manager = new THREE.LoadingManager();
+        var loader = new THREE.ObjectLoader(manager);
 
         // Light
         var dirLight = new THREE.DirectionalLight(0xffffbb, 1);
@@ -20,52 +20,52 @@ class World {
         //scene.add(new THREE.DirectionalLightHelper(dirLight, 10));
 
         // Terrain
-        let heightMapWidth = 512;
-        let heightMapDepth = 512;
-        let worldMapWidth = 100 * 0.3 * heightMapWidth;
-        let worldMapDepth = 100 * 0.3 * heightMapDepth;
-        let worldMapMaxHeight = 1000;
+        var heightMapWidth = 512;
+        var heightMapDepth = 512;
+        var worldMapWidth = 100 * 0.3 * heightMapWidth;
+        var worldMapDepth = 100 * 0.3 * heightMapDepth;
+        var worldMapMaxHeight = 1000;
         var terrain = new Terrain();
         var terrainMesh = terrain.init(worldMapWidth, worldMapMaxHeight, worldMapDepth);
         scene.add(terrainMesh);
 
         // Skybox
-        let skybox = new Skybox();
-        let skyboxMaterials = skybox.generateSkyboxMaterials();
-        let skyboxWidth = 3*worldMapWidth;
-        let skyboxDepth = 3*worldMapDepth;
-        let skyboxHeight = 20000;
+        var skybox = new Skybox();
+        var skyboxMaterials = skybox.generateSkyboxMaterials();
+        var skyboxWidth = 3*worldMapWidth;
+        var skyboxDepth = 3*worldMapDepth;
+        var skyboxHeight = 20000;
         this.cube = new THREE.Mesh(new THREE.CubeGeometry(skyboxWidth, skyboxHeight, skyboxDepth), new THREE.MeshFaceMaterial(skyboxMaterials));
         scene.add(this.cube);
 
         // Fog
-        // let fog = new Fog();
+        // var fog = new Fog();
         // fog.makeFog(scene);
 
         // Cactus
-        let cactus = new Cactus();
+        var cactus = new Cactus();
         cactus.setUpCacti(scene, loader);
 
         // UFO to camera
-        let ufo = new UFO();
+        var ufo = new UFO();
         ufo.createUFO(this.state.camera, loader);
 
         // Pyramid
-        let pyramid = new Pyramid();
+        var pyramid = new Pyramid();
         pyramid.createPyramid(scene, loader);
 
         // Brick with bump mapping
-        let cube = new Cube();
+        var cube = new Cube();
         cube.createCube(scene);
 
         // Water
-        let waterInstance = new Water();
+        var waterInstance = new Water();
         this.water = waterInstance.createWaterMesh(worldMapWidth, worldMapDepth, this.state.renderer, this.state.camera, scene, dirLight);
         scene.add(this.water);
 
         // Grass
-        let grassInstance = new Grass();
-        let grass = grassInstance.generateGrass();
+        var grassInstance = new Grass();
+        var grass = grassInstance.generateGrass();
         scene.add(grass);
     }
 

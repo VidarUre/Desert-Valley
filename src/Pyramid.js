@@ -6,7 +6,7 @@ class Pyramid {
     }
 
     createPyramid(scene, loader) {
-        let pyramidFile = "../Oblig4/models/pyramid-advance-design.json";
+        var pyramidFile = "../Oblig4/models/pyramid-advance-design.json";
         this.addObject(scene, loader, pyramidFile, 0, -50, -50, 40, 40, 40);
     }
 
