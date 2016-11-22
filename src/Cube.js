@@ -14,7 +14,7 @@ class Cube {
         brickBumpMap = new textureLoader.load("../Oblig4/textures/brick/brickMap.png");
 
         brick = new THREE.Mesh(
-            new THREE.BoxGeometry(3, 3, 3),
+            new THREE.BoxGeometry(500, 500, 500),
             new THREE.MeshPhongMaterial({
                 color:0xffffff,
                 map: brickTexture,
@@ -22,7 +22,7 @@ class Cube {
             })
         );
         scene.add(brick);
-        brick.position.set(400, 400, 400);
+        brick.position.set(1000, 1000, 1000);
         brick.receiveShadow = true;
         brick.castShadow = true;
 

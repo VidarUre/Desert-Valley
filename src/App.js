@@ -24,8 +24,9 @@ class State {
 
         // Camera
         this.camera = new THREE.PerspectiveCamera(this.fov, this.aspect, this.near, this.far);
-        this.camera.position.z = 50;
-        this.camera.position.y = 500;
+        this.camera.position.x = 1000;
+        this.camera.position.z = 1000;
+        this.camera.position.y = 2000;
         this.scene.add(this.camera);
 
         // Renderer
