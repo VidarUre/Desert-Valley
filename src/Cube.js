@@ -10,8 +10,8 @@ class Cube {
         let brick, brickTexture, brickBumpMap;
 
         let textureLoader = new THREE.TextureLoader();
-        brickTexture = new textureLoader.load("../Oblig4/texture/brick/brick.jpg");
-        brickBumpMap = new textureLoader.load("../Oblig4/texture/brick/brickMap.png");
+        brickTexture = new textureLoader.load("../Oblig4/textures/brick/brick.jpg");
+        brickBumpMap = new textureLoader.load("../Oblig4/textures/brick/brickMap.png");
 
         brick = new THREE.Mesh(
             new THREE.BoxGeometry(3, 3, 3),
